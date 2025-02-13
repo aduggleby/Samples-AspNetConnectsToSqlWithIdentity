@@ -12,11 +12,11 @@ app.MapGet("/", async (YourDbContext context) =>
     try
     {
         await context.Database.ExecuteSqlRawAsync("SELECT 1");
-        return Results.Text("Database connection successful.");
+        return Results.Text($"[{DateTime.UtcNow.ToString()}] Database connection successful.");
     }
     catch (Exception ex)
     {
-        return Results.Text($"Database connection failed: {ex.Message}");
+        return Results.Text($"[{DateTime.UtcNow.ToString()}] Database connection failed: {ex.ToString()}");
     }
 });
 
